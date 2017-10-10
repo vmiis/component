@@ -1,0 +1,11 @@
+#D__ID{
+    transition:opacity 0.7s ease-in-out;
+}
+.ease_in_out_0__ID{
+    opacity:0;
+    visibility:hidden;
+}
+.ease_in_out_1__ID{
+    opacity:1;
+    visibility:visible;
+}

@@ -1,0 +1,25 @@
+#grid_item_b__ID{
+    width:100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 0;
+    border-width: 0;
+}
+#grid_item_b__ID th{
+    font-weight: 300;
+    background-color:#EEE;
+    padding:5px;
+    border: 1px solid #CCC;
+}
+#grid_item_b__ID td{
+    font-weight: 300;
+    background-color:#FFF;
+    padding:3px;
+    border: 1px solid #CCC;
+    vertical-align: top;
+}
+#grid_item_b__ID tr td:first-child{
+    padding-left:16px;
+    padding-right:16px;
+    background-color:#EEE;
+}

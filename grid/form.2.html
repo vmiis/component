@@ -1,0 +1,123 @@
+<section>
+    <html_toolbar>
+        <div id=toolbar__ID>
+            <a id=back__ID>Back</a> <a id=save__ID>Save & Back</a> <a id=delete__ID>Delete</a>
+			<a id=copy__ID>Copy</a> <a id=paste__ID>Paste</a>
+        </div>
+    </html_toolbar>
+    <form id=F__ID>
+		<div id=table__ID>
+	        <table id=tb__ID>
+	            <thead style='background-color: #eee;'>
+	            </thead>
+	            <tbody>
+	            </tbody>
+	        </table>
+		</div>
+    </form>
+</section>
+<script>
+function F__ID(){
+	//---------------------------------------------
+	VmInclude:__BASE__/vmiis/Common-Code/grid/form2.js
+	VmInclude:__BASE__/vmiis/Common-Code/style/ease-in-out.js
+	//---------------------------------------------
+	$('#D__ID').on('load',function(){
+		_init();
+		_build_form();
+		_field_process();
+		$('#save__ID').show(); $('#delete__ID').show();
+		if(_save_style=='none'){ $('#save__ID').hide(); $('#delete__ID').hide(); }
+		if(_records[I].ID==undefined) $('#delete__ID').hide();
+	});
+	//---------------------------------------------
+	$('#copy__ID').on('click',function(){
+		if($vm.copy_paste==undefined) $vm.copy_paste={}
+		$vm.copy_paste['__ID']=jQuery.extend(true, {}, _records[I]);
+	})
+	//---------------------------------------------
+	$('#paste__ID').on('click',function(){
+		if($vm.copy_paste!=undefined && $vm.copy_paste['__ID']!=null){
+			var ID=_records[I].ID;
+			_records[I]=jQuery.extend(true, {}, $vm.copy_paste['__ID']);
+			_records[I].ID=ID;
+			_build_form()
+			_field_process();
+		}
+	})
+	//---------------------------------------------
+}
+</script>
+<style>
+    #toolbar__ID *{
+        margin:0;
+        padding:0;
+        vertical-align:middle;
+    }
+    #toolbar__ID{
+        padding:6px;
+        background-color:#ddd;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size:11pt;
+        border-bottom: 1px solid #aaa;
+    }
+    #toolbar__ID a{
+        background-color:#697b7b;
+        border:0px solid #18ab29;
+        display:inline-block;
+        cursor:pointer;
+        color:#ffffff;
+        font: 9pt/30px Arial;
+        padding-left:15px;
+        padding-right:15px;
+        text-decoration:none;
+        text-shadow:1px 1px 0px #2f6627;
+        -moz-border-radius:8px;
+        -webkit-border-radius:8px;
+        border-radius:8px;
+        transition: all 0.2s ease-in-out;
+    }
+    #toolbar__ID a:hover {
+    	background-color:#525959;
+    }
+    #D__ID{
+        background-color:#fff;
+    }
+    #tb__ID{
+        /*min-width:100px;*/
+        border-collapse: collapse;
+        font-size: 13px;
+        font-family: Helvetica, Arial, sans-serif;
+    }
+    #tb__ID td{
+        border:1px solid #bbb;
+        padding:6px;
+        white-space: pre;
+    }
+    #title__ID{
+        font-weight:700;
+    }
+    @media print {
+        body * {
+            visibility: hidden;
+        }
+        #tb__ID, #tb__ID * {
+            visibility: visible;
+        }
+        #tb__ID {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    }
+	@media screen and (max-width:900px){
+	    #toolbar__ID{
+	        overflow-x:auto;
+	        white-space: nowrap;
+	    }
+	    #table__ID{
+	        overflow-x:auto;
+	        /*white-space: nowrap;*/
+	    }
+	}
+</style>

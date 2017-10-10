@@ -1,0 +1,61 @@
+<section>
+      <div id=toolbar__ID>
+            <a id=back__ID>Back</a> <span id=ns__ID><a id=new__ID>New</a> <a id=save__ID>Save</a></span> <input placeholder='filter' id=keyword__ID type=text /> <a id=query__ID>Load</a> <a id=pv__ID >Print</a>
+            <span id=multi__ID>
+                <span class=tab__ID></span>Page Size: <select id=page_size__ID><option>30</option><option>50</option><option>100</option><option>200</option></select><span class=tab__ID></span>
+                <span id=I__ID style="display:none">0</span><span id=A__ID></span>
+                <img id=p__ID src="https://cbs.wappsystem.com/system/images/p.png" ><img id=n__ID src="https://cbs.wappsystem.com/system/images/n.png" >
+                <span class=tab__ID></span><a id=import__ID>Import</a><input id=import_f__ID type=file style='display:none' /> <span id=import_num__ID></span>
+                <span class=tab__ID></span>Start page: <input id=start__ID type=text style="width:45px" />
+                Number of page: <input id=num__ID type=text  style="width:45px" />
+                <a id=export__ID>Export</a>
+            </span>
+            <span id=elapsed__ID style='float:right'></span>
+      </div>
+      <div id=pvdiv__ID>
+          <div id=excel_container__ID style='font-size:10pt;font-family: Helvetica, Arial, sans-serif;'>
+              <div id=excel__ID class='vm_excel_div' style='background-color:#fff'></div>
+              <div id=excel_follow_up__ID></div>
+          </div>
+      </div>
+</section>
+<style>
+    #D__ID{
+        background-color:#fff;
+    }
+    #toolbar__ID *{
+        margin:0;
+        padding:0;
+        vertical-align:middle;
+    }
+    #toolbar__ID{
+        padding:6px;
+        background-color:#ddd;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size:11pt;
+        border-bottom: 1px solid #aaa;
+    }
+    #toolbar__ID a{
+        background-color:#697b7b;
+        border:0px solid #18ab29;
+        display:inline-block;
+        cursor:pointer;
+        color:#ffffff;
+        font: 9pt/30px Arial;
+        padding-left:15px;
+        padding-right:15px;
+        text-decoration:none;
+        text-shadow:1px 1px 0px #2f6627;
+        -moz-border-radius:8px;
+        -webkit-border-radius:8px;
+        border-radius:8px;
+        transition: all 0.2s ease-in-out;
+    }
+    #toolbar__ID a:hover {
+    	    background-color:#525959;
+    }
+    .tab__ID{
+        width:30px;
+        display:inline-block;
+    }
+</style>

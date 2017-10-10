@@ -1,0 +1,28 @@
+<a id=back__ID style='display:none'>back</a>
+<iframe id=iframe__ID frameborder="0" scrolling="no" sandbox='allow-scripts allow-same-origin allow-modals' id=iframe__ID ></iframe>
+<script>
+    function F__ID(){
+        //---------------------------------------------
+        var v=$vm.module_list[$vm.vm['__ID'].name].var;
+        var table_id=v.table_id;
+        var src=v.iframe_src+"?ver="+$vm.version.replace('.','')+"&server="+$vm.server+"&input="+JSON.stringify(v);
+        $('#iframe__ID').attr('src',src)
+        //---------------------------------------------
+        $('#D__ID').on('load',function(){
+            var o=$('#iframe__ID');
+            o[0].contentWindow.postMessage('load','*');
+        })
+        //---------------------------------------------
+        $('#back__ID').on('click',function(event){
+            event.stopPropagation();
+            $vm.back({div:'__ID'});
+        });
+        //---------------------------------------------
+    }
+</script>
+<style>
+    #iframe__ID{
+        border: 0px solid red;
+        width:100%;
+    }
+</style>

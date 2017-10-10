@@ -1,0 +1,18 @@
+#table_form__ID {width:100%;font-size:9pt; font-family:Verdana; margin:0px; border: 3px #B8BDBF solid; border-spacing:0; border-collapse: collapse; table-layout: automatic;}
+#table_form__ID td{ border: 1px #B8BDBF solid; color: #333333; border-collapse: collapse; text-align: left; padding: 1px;padding-right:4px; vertical-align:top;}
+#table_form__ID td:first-child{padding:3px;}
+#table_form__ID input,#table_form__ID textarea, #table_form__ID select{ font-size:9pt!Important; font-family:Verdana!Important;}
+#table_form__ID input[type=text],#table_form__ID textarea{ margin:1px;padding:1px; border-style:inset; border-width:0px; width:100%;overflow:hidden;}
+#table_form__ID input[type=checkbox]{margin:3px!Important;vertical-align:middle;}
+#table_form__ID input[type=radio]{margin:1px 3px 3px 3px;vertical-align: middle;}
+#table_form__ID textarea{height:36px;}
+#table_form__ID td:first-child{padding-left:5px;}
+#table_form__ID td:nth-child(2){vertical-align:middle;}
+
+#table_grid__ID{	width:100%; border: 1px #B8BDBF solid; font-size:9pt; font-family:Verdana; border-spacing: 0px;border-collapse: collapse;}
+#table_grid__ID th{ border: 1px solid #ddd; padding:2px; margin:1px; text-align:left; background-color:#eee;/*#9ab6da;*/ white-space: nowrap;}
+#table_grid__ID td{ border: 1px solid #ddd; padding:2px; margin:0px; }
+#table_grid__ID tr:hover {background-color: #ddd;}
+
+.header__ID {background-color:#B8BDBF;color:#000;text-align:center!Important;font-size:22px;padding:12px!Important;}
+.subheader__ID{background-color:#B8BDBF;color:#000!Important;text-align:left!Important;font-size:12px;}

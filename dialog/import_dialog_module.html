@@ -1,0 +1,65 @@
+<div id="open__ID" class="modalDialog__ID">
+	<div>
+		<u id="close__ID" title="Close" class="close__ID">X</u>
+		<h2>Information</h2>
+		<br>
+		<p>Import data... please wait.</p>
+		<br>
+		<span id=import_num__ID></span>
+		<br>
+	</div>
+</div>
+<script>
+	function F__ID(){
+		$('#close__ID').on('click',function(){
+			$vm.close_dialog({name:'_system_import_dialog_module'});
+		})
+	}
+</script>
+<style>
+    .modalDialog__ID {
+    	position: fixed;
+    	font-family: Arial, Helvetica, sans-serif;
+    	top: 0;
+    	right: 0;
+    	bottom: 0;
+    	left: 0;
+    	background: rgba(0,0,0,0.8);
+    	z-index: 99999;
+    	opacity:1;
+    	-webkit-transition: opacity 400ms ease-in;
+    	-moz-transition: opacity 400ms ease-in;
+    	transition: opacity 400ms ease-in;
+    }
+    .modalDialog__ID > div {
+    	width: 400px;
+    	position: relative;
+    	margin: 10% auto;
+    	padding: 5px 20px 13px 20px;
+    	border-radius: 10px;
+    	background: #fff;
+    	background: -moz-linear-gradient(#fff, #999);
+    	background: -webkit-linear-gradient(#fff, #999);
+    	background: -o-linear-gradient(#fff, #999);
+    }
+    .close__ID {
+		background: #606061;
+		color: #FFFFFF;
+		line-height: 25px;
+		position: absolute;
+		right: -12px;
+		text-align: center;
+		top: -10px;
+		width: 24px;
+		text-decoration: none;
+		font-weight: bold;
+		-webkit-border-radius: 12px;
+		-moz-border-radius: 12px;
+		border-radius: 12px;
+		-moz-box-shadow: 1px 1px 3px #000;
+		-webkit-box-shadow: 1px 1px 3px #000;
+		box-shadow: 1px 1px 3px #000;
+		cursor:pointer;
+	}
+	.close__ID:hover { background: #00d9ff; }
+</style>

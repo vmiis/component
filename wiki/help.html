@@ -1,0 +1,57 @@
+<section>
+    VmInclude:__BASE__/vmiis/Common-Code/grid/grid.html
+</section>
+<script>
+    function F__ID(){
+        //-------------------------------------
+        VmInclude:__BASE__/vmiis/Common-Code/grid/grid.js
+        VmInclude:__BASE__/vmiis/Common-Code/style/ease-in-out.js
+        //-------------------------------------
+        _fields="_Form,Order,_Title,_Hidden|Title,_Hidden|Contents";
+        _fields+=",Submit Date|DateTime,Submitted by|Author,_Delete";
+        //-------------------------------------
+        $('#D__ID').on('load',function(){  _set_req(); _request_data();  })
+        //-------------------------------------
+        _cell_render=function(records,I,field,td,set_value,source){
+            switch(field){
+                case '_Title':
+                    records[I].vm_custom[field]=true;
+                    if(_records[I].UID===undefined) return;
+                    td.html("<u style='cursor:pointer'>"+records[I].Title+"</u>");
+                    td.find('u').on('click',function(){
+                        var contents=records[I].Contents;
+                            $vm.load_module_by_name(_app_id+'wiki_view',$vm.root_layout_content_slot,{
+                                contents:contents,
+                            });
+                    });
+                    td.css('min-width','500px');
+                    td.css('padding-left','10px');
+                    break;
+            }
+        }
+        //-------------------------------------
+        _before_submit=function(record,dbv){
+            dbv.S1=record.Order;
+            return true;
+        };
+        //-------------------------------------
+        var _set_req=function(){
+            var sql="with tb as (select Information,ID,UID,PUID,DateTime,Author,RowNum=row_number() over (order by S1 DESC) from [TABLE-"+_db_pid+"-@S1] )";
+            sql+="select Information,ID,UID,PUID,DateTime,Author,RowNum from tb where RowNum between @I6 and @I7";
+            var sql_n="select count(ID) from [TABLE-"+_db_pid+"-@S1]";
+            _req={cmd:'query_records',db_pid:_db_pid,sql:sql,sql_n:sql_n,s1:'"'+$('#keyword__ID').val()+'"',I:$('#I__ID').text(),page_size:$('#page_size__ID').val()}
+        }
+        //-------------------------------------
+        var _set_req_export=function(){
+            var sql="with tb as (select Information,ID,UID,DateTime,Author,RowNum=row_number() over (order by S1 DESC) from [TABLE-"+_db_pid+"] )";
+            sql+="select Information,ID,UID,DateTime,Author,RowNum from tb";
+            _set_from_to();
+            if(_from!='0' && _to!='0') sql+=" where RowNum between @I6 and @I7";
+            _req={cmd:'query_records',sql:sql,i6:_from,i7:_to}
+        }
+        //-----------------------------------------------
+    }
+</script>
+<style>
+    VmInclude:__BASE__/vmiis/Common-Code/grid/grid.css
+</style>

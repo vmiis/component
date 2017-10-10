@@ -1,0 +1,130 @@
+<div id=toolbar__ID class="navbar navbar-default" style='margin-bottom:0px;'>
+    <div class="navbar-form navbar-left">
+            <span class=tool__ID>
+                <button type=button class='btn btn-secondary' id=previous__ID><i class="fa fa-arrow-left"></i></button>
+                <button type=button class='btn btn-secondary' id=this__ID>This Month</button>
+                <button type=button class='btn btn-secondary' id=next__ID><i class="fa fa-arrow-right"></i></button>
+            </span>
+            <button type=button class='btn btn-secondary' id=refresh__ID>Refresh</button>
+            <span id=month_year__ID />
+    </div>
+</div>
+<div id=calendar__ID>
+    <div class='header__ID'>
+        <div class='col_header__ID'>Monday</div>
+        <div class='col_header__ID'>Tuesday</div>
+        <div class='col_header__ID'>Wednesday</div>
+        <div class='col_header__ID'>Thursday</div>
+        <div class='col_header__ID'>Friday</div>
+        <div class='col_header__ID'>Saturday</div>
+        <div class='col_header__ID'>Sunday</div>
+    </div>
+    <div id=body__ID></div>
+</div>
+<style>
+    #calendar__ID{
+        font-size:9pt;
+        font-family:Verdana;
+        overflow: auto;
+    }
+    .time__ID{
+    	margin-bottom:2px;
+    	border-radius:3px;
+    	box-shadow: 3px 3px 2px #888;
+    }
+    #calendar__ID u{
+        cursor:pointer;
+        text-decoration: none;
+    }
+    .event__ID{
+	    cursor:pointer;
+	    border:1px solid red;
+	    white-space: pre-wrap;
+	    display:inline-block;
+	    margin:5px 10px 5px 10px;
+
+	    font-size: 13px;
+	    border-radius: 4px;
+	    padding: 5px;
+	    line-height: 18px;
+	    background: #e4f2f2;
+	    border: 1px solid #b5dbdc;
+	    color: #009aaf;
+	    text-decoration: none;
+
+    }
+    .header__ID{
+	    font-weight:bold;
+	    color:#fff;
+	    background-color:#868e96;
+        display:table;
+        width: 100%;
+        text-align: center;
+        border:0px solid #000;
+    }
+    .row__ID{
+        display:table;
+        width: 100%;
+        min-height:80px;
+    }
+    .col_header__ID{
+	    display:table-cell;
+	    width:14.285%;
+        border-right:1px solid #bbb;
+        padding:5px
+    }
+    .col__ID{
+	    display:table-cell;
+	    width:14.285%;
+	    border-right:1px solid #ccc;
+	    border-bottom:1px solid #ccc;
+        vertical-align:top;
+    }
+    .col__ID:hover {
+    	background: #f3f3f3;
+    }
+    .day__ID{
+	    text-align:center;
+    	background: #ccc;
+    	color: #000;
+    	width: 22px;
+        height: 22px;
+        padding-top:2px;
+    	border-radius:50%;
+    	float: right;
+
+    }
+    .weekday{
+        display:none;
+    }
+
+    @media(max-width: 768px){
+        .tool__ID{
+            display: inline-block;
+            padding-bottom: 2px;
+        }
+        .weekday{
+            display:inline-block;
+            padding-left:12px;
+        }
+	    .header__ID{
+		    display:none;
+	    }
+    	.row__ID{
+            min-height:auto;
+    	}
+	    .col__ID{
+		    float: left;
+		    width:100%;
+	    }
+	    .day__ID{
+            float:none;
+            display:inline-block;
+	    }
+	    .not_this_month{
+		    display:none;
+	    }
+	    .event_container{
+	    }
+    }
+</style>

@@ -1,0 +1,27 @@
+<div id=toolbar__ID class="navbar navbar-default" style='margin-bottom:0px;'>
+    <div class="navbar-form navbar-left">
+        <button type=button class='btn btn-secondary' id=this__ID>Today</button>
+        <button type=button class='btn btn-secondary' id=previous__ID><i class="fa fa-arrow-left"></i></button>
+        <input  type=text class="form-control" id=date__ID style='width:90px;display:inline-block' />
+        <button type=button class='btn btn-secondary' id=next__ID><i class="fa fa-arrow-right"></i></button>
+        <button type=button class='btn btn-secondary' id=refresh__ID>Refresh</button>
+    </div>
+</div>
+<div style='overflow-x:auto;white-space: nowrap; padding-left:2px;padding-right:2px'>
+    <table id=table__ID>
+    	<thead id=thead__ID></thead>
+    	<tbody id=tbody__ID></tbody>
+    </table>
+</div>
+<style>
+    #table__ID   {	min-width:1200px; width:100%;	border: 1px #888 solid; 	font-size:9pt; 	font-family:Verdana; 	border-spacing: 0;	border-collapse: collapse;	table-layout:fixed;}
+    #table__ID th{ 	border: 1px solid #ddd; 	padding:0px; 	margin:0px; 	text-align:center;	background-color:#bbb}
+    #table__ID td{ 	border: 1px solid #ddd;		padding-top:2px; 	padding-bottom:2px; 	margin:0px; 	white-space: nowrap; }
+    #D__ID{ background-color:#fff;}
+    #table__ID thead tr{
+        height:28px;
+    }
+    #table__ID u{
+        cursor:pointer;
+    }
+</style>

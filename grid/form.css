@@ -1,0 +1,69 @@
+#D__ID{
+    background-color:#fff;
+	color:#000;
+    font-size:13px;
+    font-family: Helvetica, Arial, sans-serif;
+	height:100%;
+	overflow: auto;
+	animation: vm_module_fadein 1.0s;
+}
+#tb__ID {width:100%;font-size:9pt; font-family:Verdana; margin:0px; border: 3px #B8BDBF solid; border-spacing:0; border-collapse: collapse; table-layout: automatic;}
+#tb__ID td{border: 1px #B8BDBF solid; color: #333333; border-collapse: collapse; text-align: left; padding: 1px;padding-right:4px; vertical-align:top;}
+#tb__ID td:first-child{padding:3px;}
+#tb__ID input,textarea, select{ font-size:9pt!Important; font-family:Verdana!Important;}
+#tb__ID input[type=text],#tb__ID textarea{ margin:1px;padding:1px; border-style:inset; border-width:0px; width:100%;overflow:hidden;}
+#tb__ID input[type=checkbox]{margin:3px!Important;}
+#tb__ID textarea{height:36px;}
+#tb__ID td:first-child{padding-left:5px;}
+#tb__ID td:nth-child(2){vertical-align:middle;}
+#tb__ID label.error { float: none; color: red; vertical-align: top; }
+
+.header__ID {background-color:#B8BDBF;color:#000;text-align:center!Important;font-size:22px;padding:12px!Important;}
+.subheader__ID{background-color:#B8BDBF;color:#000!Important;text-align:left!Important;font-size:12px;}
+.sel__ID{
+    width: -moz-calc(100% - 120px)!Important;
+    width: -webkit-calc(100% - 120px)!Important;
+    width: calc(100% - 120px)!Important;
+}
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #F__ID, #F__ID * {
+        visibility: visible;
+    }
+    .c_print {
+        display: none;
+    }
+    #F__ID {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .file_buttons{
+        display:none;
+    }
+}
+@media screen and (max-width:900px){
+    #elapsed__ID{
+        display:none;
+    }
+    #toolbar__ID{
+        overflow-x:auto;
+        white-space: nowrap;
+    }
+    #table__ID{
+        overflow-x:auto;
+    }
+    #grid__ID tr td:first-child{
+        padding-left:10px;
+        padding-right:10px;
+    }
+    #F__ID{
+        overflow-x:auto;
+    }
+    #tb__ID{
+        margin-left:0!Important;
+        margin-top:0!Important;
+    }
+}

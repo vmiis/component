@@ -1,0 +1,102 @@
+<section>
+    <html_toolbar>
+        <div id=toolbar__ID>
+            <a id=back__ID>Back</a> <a id=save__ID>Save & Back</a> <a id=delete__ID>Delete</a>
+        </div>
+    </html_toolbar>
+    <form id=F__ID>
+        <table id=tb__ID>
+            <thead style='background-color: #eee;'>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </form>
+</section>
+<script>
+    function F__ID(){
+        //---------------------------------------------
+        VmInclude:__BASE__/vmiis/Common-Code/grid/form.js
+        VmInclude:__BASE__/vmiis/Common-Code/style/ease-in-out.js
+        //---------------------------------------------
+        $('#D__ID').on('load',function(){
+            _init();
+            //------------
+            //set participant data
+            var participant=$vm.vm['__ID'].op.trigger_parameters.participant;
+            var participant_uid=$vm.vm['__ID'].op.trigger_parameters.participant_uid;
+            _records[0].Participant=participant;
+            _records[0].Participant_uid=participant_uid;
+            //------------
+            _build_form();
+            //------------
+            //hide first 3 lines (status,notes and participant)
+            $('#F__ID tbody tr:first').hide();
+            $('#F__ID tbody tr:nth-child(2)').hide();
+            $('#F__ID tbody tr:nth-child(3)').hide();
+            //------------
+            _field_process();
+            $('#save__ID').show(); $('#delete__ID').show();
+            if(_save_style=='none'){ $('#save__ID').hide(); $('#delete__ID').hide(); }
+            if(_records[I].ID==undefined) $('#delete__ID').hide();
+        });
+        //---------------------------------------------
+    }
+</script>
+<style>
+    #toolbar__ID *{
+        margin:0;
+        padding:0;
+        vertical-align:middle;
+    }
+    #toolbar__ID{
+        padding:6px;
+        background-color:#ddd;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size:11pt;
+        border-bottom: 1px solid #aaa;
+    }
+    #toolbar__ID a{
+        background-color:#697b7b;
+        border:0px solid #18ab29;
+        display:inline-block;
+        cursor:pointer;
+        color:#ffffff;
+        font: 9pt/30px Arial;
+        padding-left:15px;
+        padding-right:15px;
+        text-decoration:none;
+        text-shadow:1px 1px 0px #2f6627;
+        -moz-border-radius:8px;
+        -webkit-border-radius:8px;
+        border-radius:8px;
+        transition: all 0.2s ease-in-out;
+    }
+    #toolbar__ID a:hover {
+    	background-color:#525959;
+    }
+    #tb__ID{
+        /*min-width:100px;*/
+        border-collapse: collapse;
+    }
+    #tb__ID td{
+        border:1px solid #bbb;
+        padding:6px;
+    }
+    #title__ID{
+        font-weight:700;
+    }
+    @media print {
+        body * {
+            visibility: hidden;
+        }
+        #tb__ID, #tb__ID * {
+            visibility: visible;
+        }
+        #tb__ID {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    }
+</style>

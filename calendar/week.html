@@ -1,0 +1,35 @@
+<section style='overflow-x:auto;white-space: nowrap;'>
+    <table id=calendar__ID>
+        <thead>
+            <tr>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+            </tr>
+        </thead>
+        <tbody id=tbody__ID></tbody>
+    </table>
+</section>
+<style>
+    #calendar__ID{
+        min-width:100%;	font-size:9pt; 	font-family:Verdana; 	border-spacing: 0px;	border-collapse: collapse;	table-layout:fixed;
+    }
+    #calendar__ID th{ 	border: 1px solid #999; padding:0 3px; 	margin:0; 	text-align:center;	background-color:#bbb}
+    #calendar__ID td{ 	border: 1px solid #999;	padding:0 3px;  margin:0; }
+    #calendar__ID td ul {padding-left: 23px;}
+    .time__ID{
+        margin-bottom:2px;
+        border-radius:3px;
+        box-shadow: 3px 3px 2px #888;
+    }
+    #calendar__ID u{
+        cursor:pointer;
+    }
+    #calendar__ID thead tr{
+        height:28px;
+    }
+</style>

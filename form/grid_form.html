@@ -1,0 +1,180 @@
+<html_toolbar>
+    <div id=toolbar__ID>
+        <a id=back__ID>Back</a> <a id=save__ID>Save & Back</a> <a id=pv__ID >Print</a>
+    </div>
+</html_toolbar>
+<div id=pvdiv__ID>
+    <table id=tb__ID>
+        <thead style='background-color: #eee;'>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+<script>
+    function F__ID(){
+        var records;
+        var I;
+        var before_submit;
+        var db_pid;
+        //---------------------------------------------
+        $('#D__ID').on('load',function(){
+            $('#save__ID').css('background','');
+            //var record=$vm.vm['__ID'].op.record;
+            if(Array.isArray($vm.module_list[$vm.vm['__ID'].name])===true){
+                db_pid=$vm.module_list[$vm.vm['__ID'].name][0];
+            }
+            else{
+                db_pid=$vm.module_list[$vm.vm['__ID'].name]['table_id'];
+            }
+            var headerA=$vm.vm['__ID'].op.headerA;
+            var headerB=$vm.vm['__ID'].op.headerB;
+            var widthA=$vm.vm['__ID'].op.widthA;
+            var widthB=$vm.vm['__ID'].op.widthB;
+            before_submit=$vm.vm['__ID'].op.before_submit;
+            records=$vm.vm['__ID'].op.records;
+            I=$vm.vm['__ID'].op.I;
+            var data_process=$vm.vm['__ID'].op.data_process;
+            //alert(_db_pid)
+            //alert(record)
+            $('#tb__ID thead').html("<tr><td>Name</td><td>Value</td></tr>");
+            var txt="";
+            for(var i=0;i<headerA.length;i++){
+                var name=headerA[i];
+                var value="";
+                if(records[I][headerB[i]]!==undefined) value=records[I][headerB[i]];
+                var value=$('<div/>').text(value).html();
+                value=value.replace(/\r/g,'\n').replace(/\n\n/g,'\n').replace(/\n/g,'<br>');
+                if(name!='Form' && name!='Delete' && name!='Submit Date' && name!='Submitted by'){
+                    txt+="<tr><td style='background-color:#F8F8F8;width:"+widthA+"'>"+name+"</td><td data-id="+headerB[i]+" style='width:"+widthB+"' contenteditable>"+value+"</td></tr>";
+                }
+            }
+            $('#tb__ID tbody').html(txt);
+            $('#tb__ID tbody td').each(function(){
+                var data_id=$(this).attr('data-id');
+                if(data_id!==undefined){
+//                    alert(data_id)
+                    if(data_process!==''){ data_process(records,I,data_id,$(this)); }
+                }
+                if(data_id=='DateTime' || data_id=='Author' || records[I].vm_readonly[data_id]===true || records[I].vm_custom[data_id]===true){
+                    $(this).removeAttr('contenteditable');
+                    $(this).css('background-color','#F8F8F8')
+                }
+            })
+            $('#tb__ID tbody td').blur(function(){
+                var data_id=$(this).attr('data-id');
+                if(data_id!==undefined){
+                    var value=$(this).html().replace(/<div>/g,'').replace(/<\/div>/g,'\n').replace(/<br>/g,'\n');
+                    var value=$('<div/>').html(value).text();
+                    if(records[I].vm_custom[data_id]!==true){
+                        if(value!==records[I][data_id]){
+                            records[I].vm_dirty=1;
+                            records[I][data_id]=value;
+                            $('#save__ID').css('background','#E00');
+                        }
+                    }
+                    var fun=records[I].vm_validation[data_id];
+                    if(fun!==undefined){
+                        $(this).css('background','#FFF');
+                        records[I].vm_valid[data_id]=1;
+                        var R=fun(value);
+                        if(R===false){
+                            $(this).css('background','#E4CDCD');
+                            records[I].vm_valid[data_id]=0;
+                        }
+                    }
+                }
+            })
+
+        });
+        //---------------------------------------------
+        $('#save__ID').on('click', function(){
+            var record=records[I];
+            if(record!==false){
+                var ok=true;
+                if(before_submit!==''){
+                    var dbv={};
+                    var r=before_submit(record,dbv);
+                    if(r===false){
+                        ok=false;
+                    }
+                }
+                if(ok===true){
+                    var rid=record.ID;
+                    if(rid===null || rid===undefined) add_record(record,dbv);
+                    else modify_record(record,dbv,rid);
+                }
+            }
+        })
+        //-------------------------------------
+        $('#pv__ID').on('click',function(){
+        	var style="";
+    		if($('#D__ID').find('style')[0]!==undefined) style=$('#D__ID').find('style')[0].innerText+" table{font-size:10pt;font-family: Helvetica, Arial, sans-serif;}";
+    		$('#pvdiv__ID').vm3('popup',style);
+    	});
+    	//---------------------------------------------
+        $('#back__ID').on('click',function(event){
+            event.stopPropagation();
+            $vm.back({div:'__ID'});
+        });
+    	//---------------------------------------------
+        var add_record=function(row_data,dbv){
+            var req={cmd:"add_record",db_pid:db_pid.toString(),data:row_data,dbv:dbv};
+            $VmAPI.request({data:req,callback:function(res){
+                $('#back__ID').trigger('click');
+            }});
+        }
+        //---------------------------------------------
+        var modify_record=function(row_data,dbv,rid){
+            var req={cmd:"modify_record",rid:rid,db_pid:db_pid.toString(),data:row_data,dbv:dbv};
+            $VmAPI.request({data:req,callback:function(res){
+                $('#back__ID').trigger('click');
+            }});
+        }
+        //---------------------------------------------
+    }
+</script>
+<style>
+    #toolbar__ID *{
+        margin:0;
+        padding:0;
+        vertical-align:middle;
+    }
+    #toolbar__ID{
+        padding:6px;
+        background-color:#ddd;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size:11pt;
+        border-bottom: 1px solid #aaa;
+    }
+    #toolbar__ID a{
+        background-color:#697b7b;
+        border:0px solid #18ab29;
+        display:inline-block;
+        cursor:pointer;
+        color:#ffffff;
+        font: 9pt/30px Arial;
+        padding-left:15px;
+        padding-right:15px;
+        text-decoration:none;
+        text-shadow:1px 1px 0px #2f6627;
+        -moz-border-radius:8px;
+        -webkit-border-radius:8px;
+        border-radius:8px;
+        transition: all 0.2s ease-in-out;
+    }
+    #toolbar__ID a:hover {
+    	background-color:#525959;
+    }
+    #tb__ID{
+        /*min-width:100px;*/
+        border-collapse: collapse;
+    }
+    #tb__ID td{
+        border:1px solid #bbb;
+        padding:6px;
+    }
+    #title__ID{
+        font-weight:700;
+    }
+</style>

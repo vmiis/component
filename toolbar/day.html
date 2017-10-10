@@ -1,0 +1,51 @@
+<div id=toolbar__ID>
+    <a id=back__ID>Back</a>
+    <a id=this__ID>Today</a><span class=tab__ID></span>
+    <a id=previous__ID>Previous Day</a>
+    <input id=date__ID type=text style='width:90px' />
+    <a id=next__ID>Next Day</a><span class=tab__ID></span>
+    <a id=refresh__ID>Refresh</a>
+</div>
+<style>
+      #toolbar__ID{
+          padding:6px;
+          background-color:#ddd;
+          overflow-x:auto;
+          white-space: nowrap;
+      }
+      #toolbar__ID input[type='text']{
+          height:24px;
+          padding-left:6px;
+      }
+      #toolbar__ID a{
+          background-color:#697b7b;
+          border:0px solid #18ab29;
+          display:inline-block;
+          cursor:pointer;
+          color:#ffffff;
+          font: 14px/30px Arial;
+          padding-left:15px;
+          padding-right:15px;
+          text-decoration:none;
+          text-shadow:1px 1px 0px #2f6627;
+          -moz-border-radius:8px;
+          -webkit-border-radius:8px;
+          border-radius:8px;
+          transition: all 0.2s ease-in-out;
+      }
+      #toolbar__ID a:hover {
+        background-color:#525959;
+      }
+      #toolbar__ID .tab__ID{
+          width:30px;
+          display:inline-block;
+      }
+      #toolbar__ID input {
+          height:21px;
+          padding-left:3px;
+      }
+      .tab__ID{
+          width:30px;
+          display:inline-block;
+      }
+</style>
