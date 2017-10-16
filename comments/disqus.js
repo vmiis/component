@@ -5,7 +5,8 @@ if($vm.comments==1){
 	$('#btn_c__ID').on('click',function(){
 	    if( $('#comments__ID').css('display')=='none' ){
 		    $('#comments__ID').css('display','block');
-			var top1=$('#comments__ID').offset().top;	$('#D__ID').scrollTop(top1/2);
+			var top1=$('#comments__ID').offset().top;	//$('#D__ID').scrollTop(top1/2);
+			window.scrollTo(0,top1/2);
 			if(active==0){
 				active=1;
 				$('#disqus_thread').appendTo("#comments__ID");
