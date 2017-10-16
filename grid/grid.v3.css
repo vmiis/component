@@ -78,17 +78,6 @@
     line-height: 10px;
     color: #888;
 }
-.aaavalidation_info{
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 0 10px 10px;
-    border-color: transparent transparent red transparent;
-    cursor:pointer;
-    position:absolute;
-    right:0;
-    bottom:top
-}
 .validation_info {
     position:absolute;
     right:0;
@@ -138,10 +127,6 @@ ul.ui-autocomplete.ui-menu{font-size:12px}
 @media screen and (max-width:900px){
     #elapsed__ID{
         display:none;
-    }
-    #toolbar__ID{
-        overflow-x:auto;
-        white-space: nowrap;
     }
     #table__ID{
         overflow-x:auto;

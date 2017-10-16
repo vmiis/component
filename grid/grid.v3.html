@@ -1,5 +1,5 @@
 <section>
-    <div id=toolbar__ID class="navbar navbar-default" style='background-color:#ccc;padding-left:0px;margin-bottom:0px;overflow:hidden'>
+    <div id=toolbar__ID class="navbar navbar-default">
 	    	<form class="navbar-form navbar-left">
 		        	<button id=new__ID  type=button class='btn btn-secondary' >New</button>
 		        	<button id=save__ID type=button class='btn btn-secondary'>Save</button>
@@ -20,12 +20,17 @@
     </div>
 </section>
 <style>
-    #D__ID{
-        background-color:#fff;
-    }
+	#toolbar__ID{
+		background-color:#ccc;
+		padding-left:2px;
+		margin-bottom:0px;
+		overflow:hidden'
+	}
 	@media screen and (max-width:768px){
 		#toolbar__ID form{
 			margin:0px;
-		}
+	        overflow-x:auto;
+	        white-space: nowrap;
+	    }
 	}
 </style>
