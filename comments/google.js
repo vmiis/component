@@ -5,8 +5,7 @@ if($vm.comments==1){
 	$('#btn_c__ID').on('click',function(){
 	    if( $('#g_comments__ID').css('display')=='none' ){
 		    $('#g_comments__ID').css('display','block');
-			var top1=$('#g_comments__ID').offset().top;	//$('#D__ID').scrollTop(top1/2); 
-			window.scrollTo(0,top1/2);
+			var top1=$('#g_comments__ID').offset().top;	$('#D__ID').scrollTop(top1/2); 
 			if(active==0){
 				active=1;
 				gapi.comments.render('comments__ID', {
