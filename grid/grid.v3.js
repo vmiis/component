@@ -869,6 +869,13 @@ $('#D__ID').on('show',function(){
         $vm.refresh=0;
         _set_req(); _request_data();
     }
+	else {
+		if(_list[_name].refresh==1) {
+			_list[_name].refresh=0;
+			_set_req(); _request_data();
+		}
+	}
+
     if(_form_I!=-1 && _records[_form_I].vm_dirty==1){
         $('#save__ID').css('background','#E00');
         _render(_form_I);
@@ -986,7 +993,9 @@ $('#D__ID').on('load_quest_form_module',function(event,trigger_parameters){
 })
 //-----------------------------------------------
 var _mlist=$vm.module_list;
+var _list=$vm.module_list;
 var _mobj=$vm.vm['__ID'];
+var _name=$vm.vm['__ID'].name;
 var _sys='';
 var _config='';
 var _ids='';
