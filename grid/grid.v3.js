@@ -478,12 +478,23 @@ var _request_data=function(){
 var _export_records=function(){
     var g_I,gLoop,busy,results,gDialog_module_id;
 	//g_I page number, 0 is first page
+    var start=$('#start__ID').val();  if(start==="") start=1;
+    var page_size=parseInt($('#page_size__ID').val());
+    var num=$('#num__ID').val(); num=parseInt(num);
+
+    if($('#start__ID').val()==undefined) start=1;
+    if($('#page_size__ID').val()==undefined) page_size=30;
+    if($('#num__ID').val()==undefined) num=1;
+    alert(start)
+    alert(page_size)
+    alert(num)
     var one_loop=function(){
 		//page by page (500ms) to get data and save to results
         if(busy==1) return;
         busy=1;
-        var start=$('#start__ID').val();  if(start==="") start=1;
-        var page_size=parseInt($('#page_size__ID').val());
+
+        console.log(g_I)
+
         var i1=1+(start-1+g_I)*page_size,i2=i1+page_size-1;
         _set_req_export(i1.toString(),i2.toString());
         $VmAPI.request({data:_req,callback:function(res){
@@ -499,13 +510,9 @@ var _export_records=function(){
                 return;
             }
             g_I++;
-            var num=$('#num__ID').val();
-            if(num!=''){
-                num=parseInt(num);
-                if(g_I>num){
-                    end_export();
-                    return;
-                }
+            if(g_I>num){
+                end_export();
+                return;
             }
         }})
     }
