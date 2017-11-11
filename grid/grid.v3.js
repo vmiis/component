@@ -140,7 +140,7 @@ var _set_req_with_sql_where=function(){
     _req={cmd:'query_records',sql:sql,db_pid:_db_pid,sql_n:sql_n,s1:'"'+$('#keyword__ID').val()+'"',I:$('#I__ID').text(),page_size:$('#page_size__ID').val()}
 }
 //-------------------------------------
-if($vm.module_list['busy_dialog_module']===undefined) $vm.module_list['busy_dialog_module']={table_id:'--------',url:'__BASE__/vmiis/Common-Code/dialog/busy_dialog_module.html'};
+if($vm.module_list['busy_dialog_module']===undefined) $vm.module_list['busy_dialog_module']={table_id:'--------',url:'__COMPONENT__/dialog/busy_dialog_module.html'};
 var _headerA="";
 var _headerB="";
 var _headerFormA="";
@@ -570,7 +570,7 @@ function _process_postcode(changes,source,Suburb,iS,Postcode,iP,State,iT){
     }
 }
 //-------------------------------------
-if($vm.module_list['uploading_file_dialog_module']===undefined) $vm.module_list['uploading_file_dialog_module']=['--------','__BASE__/vmiis/Common-Code/dialog/uploading_file_dialog_module.html','2']
+if($vm.module_list['uploading_file_dialog_module']===undefined) $vm.module_list['uploading_file_dialog_module']=['--------','__COMPONENT__/dialog/uploading_file_dialog_module.html','2']
 $vm.load_module_by_name('uploading_file_dialog_module','',{})
 var _record_add=function(I){
     var tr=$('#grid__ID'+' tr:nth-child('+(I+2)+')');
@@ -700,7 +700,7 @@ var _show_photo=function(rid,filename,modified) {
 }
 //-------------------------------------
 //Import
-if($vm.module_list['import_dialog_module']===undefined) $vm.module_list['import_dialog_module']=['--------','__BASE__/vmiis/Common-Code/dialog/import_dialog_module.html','2']
+if($vm.module_list['import_dialog_module']===undefined) $vm.module_list['import_dialog_module']=['--------','__COMPONENT__/dialog/import_dialog_module.html','2']
 $vm.load_module_by_name('import_dialog_module','',{})
 function import_handleFileSelect(evt) {
     var files = evt.target.files;
@@ -895,7 +895,7 @@ $('#D__ID').on('load_form_module',function(event,trigger_parameters){
 	if(form_module_name===undefined){
 		var name='grid_form__ID';
 		if($vm.module_list[name]==undefined){
-			$vm.module_list[name]=[_db_pid.toString(),'__BASE__/vmiis/Common-Code/grid/form.html',''];
+			$vm.module_list[name]=[_db_pid.toString(),'__COMPONENT__/grid/form.html',''];
 		}
 		$vm.load_module_by_name(name,$vm.root_layout_content_slot,
 			{
@@ -954,7 +954,7 @@ $('#D__ID').on('load_quest_form_module',function(event,trigger_parameters){
     var form_module_name=$vm.module_list[this_module_name]['form_module'];
 	if(form_module_name===undefined){
 	    var name='grid_form_quest';
-	    $vm.module_list[name]={table_id:_db_pid.toString(),url:'__BASE__/vmiis/Common-Code/grid/form_quest.html'};
+	    $vm.module_list[name]={table_id:_db_pid.toString(),url:'__COMPONENT__/grid/form_quest.html'};
 	    $vm.load_module_by_name(name,$vm.root_layout_content_slot,
 	        {   records:_records,res:_res,I:0,
 	            headerA:_headerFormA,headerB:_headerFormB,
