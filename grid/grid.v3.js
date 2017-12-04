@@ -485,9 +485,9 @@ var _export_records=function(){
     if($('#start__ID').val()==undefined) start=1;
     if($('#page_size__ID').val()==undefined) page_size=30;
     if($('#num__ID').val()==undefined) num=1;
-    alert(start)
-    alert(page_size)
-    alert(num)
+//    alert(start)
+//    alert(page_size)
+//    alert(num)
     var one_loop=function(){
 		//page by page (500ms) to get data and save to results
         if(busy==1) return;
@@ -510,7 +510,7 @@ var _export_records=function(){
                 return;
             }
             g_I++;
-            if(g_I>num){
+            if(g_I>=num){
                 end_export();
                 return;
             }
@@ -522,7 +522,8 @@ var _export_records=function(){
         gDialog_module_id=$vm.get_module_id({name:'_system_export_dialog_module'})
         $('#export_num'+gDialog_module_id).text("Page 0");
         $vm.open_dialog({name:'_system_export_dialog_module'});
-        gLoop=setInterval(one_loop, 500);
+		gLoop=setInterval(one_loop, 500);
+		$vm._export_g_loop=gLoop;
     }
     //-------------------------------------
     var end_export=function(){
@@ -637,7 +638,8 @@ var _row_data=function(I){
     for(var i=0;i<_headerB.length;i++){
         var a=_headerA[i][0];
         var b=_headerB[i];
-        if(_headerA[i]=='_Hidden' || _headerA[i]=='_gridHidden' || (a!='_' && b!=="ID" && b!=="DateTime" && b!=="Author") ){
+		var b2=_headerB[i].substring(0,3);
+        if(_headerA[i]=='_Hidden' || _headerA[i]=='_gridHidden' || (b2!='I2_' && a!='_' && b!=="ID" && b!=="DateTime" && b!=="Author") ){
             if(_records[I][b]!==null) data[b]=_records[I][b];
         }
     }
