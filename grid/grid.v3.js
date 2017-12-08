@@ -266,6 +266,7 @@ var _render=function(I){
 					if($vm.module_list[name]==undefined){
                     	$vm.module_list[name]={table_id:_db_pid.toString(),url:'__PARTS__/grid/form.v3.html'};
 					}
+					if($vm.module_list[this_module_name].prefix!=undefined) prefix=$vm.module_list[this_module_name].prefix;
                     $vm.load_module_by_name(name,$vm.root_layout_content_slot,
                         {
 							//----------------
@@ -284,15 +285,18 @@ var _render=function(I){
                             record_type:_record_type,
                             row_data:_row_data,
                             json:_json,
+							input:$vm.vm['__ID'].op.input,
                         }
                     );
                 }
                 else{
-                    if($vm.module_list[form_module_name]===undefined){
+					var prefix="";
+					if($vm.module_list[this_module_name].prefix!=undefined) prefix=$vm.module_list[this_module_name].prefix
+                    if($vm.module_list[prefix+form_module_name]===undefined){
                         alert('Can not find "'+form_module_name+'" in the module list');
                         return;
                     }
-                    $vm.load_module_by_name(form_module_name,$vm.root_layout_content_slot,
+                    $vm.load_module_by_name(prefix+form_module_name,$vm.root_layout_content_slot,
                         {
 							//----------------
 							sys:_mobj.op.sys,
@@ -314,6 +318,7 @@ var _render=function(I){
                             record_type:_record_type,
                             row_data:_row_data,
                             json:_json,
+							input:$vm.vm['__ID'].op.input,
                         }
                     );
                 }
@@ -921,7 +926,11 @@ $('#D__ID').on('load_form_module',function(event,trigger_parameters){
 		);
 	}
     else if(form_module_name!=undefined){
-        $vm.load_module_by_name(form_module_name,$vm.root_layout_content_slot,
+		var prefix="";
+		if($vm.module_list[this_module_name].prefix!=undefined){
+			prefix=$vm.module_list[this_module_name].prefix;
+		}
+        $vm.load_module_by_name(prefix+form_module_name,$vm.root_layout_content_slot,
             {
 				//----------------
 				sys:_mobj.op.sys,
