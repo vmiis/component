@@ -487,12 +487,12 @@ var _export_records=function(){
     var page_size=parseInt($('#page_size__ID').val());
     var num=$('#num__ID').val(); num=parseInt(num);
 
-    if($('#start__ID').val()==undefined) start=1;
+    if($('#start__ID').val()==undefined || $('#start__ID').val()=="") start=1;
     if($('#page_size__ID').val()==undefined) page_size=30;
-    if($('#num__ID').val()==undefined) num=1;
-//    alert(start)
-//    alert(page_size)
-//    alert(num)
+    if($('#num__ID').val()==undefined || $('#num__ID').val()=="") num=1;
+	//    alert(start)
+	//    alert(page_size)
+	//    alert(num)
     var one_loop=function(){
 		//page by page (500ms) to get data and save to results
         if(busy==1) return;
@@ -535,7 +535,9 @@ var _export_records=function(){
         clearInterval(gLoop);
         $vm.close_dialog({name:'_system_export_dialog_module'});
         if(_fields_e==='') _fields_e=_fields.replace('_Form,','').replace(',_Delete','');
-        $vm.download_csv({name:_filename,data:results,fields:_fields_e});
+		_records=results;
+		if(_data_process!==''){ _data_process(); }
+        $vm.download_csv({name:_filename,data:_records,fields:_fields_e});
     }
     //-------------------------------------
     start_export();
