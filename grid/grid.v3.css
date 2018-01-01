@@ -106,6 +106,20 @@ ul.ui-autocomplete.ui-menu{font-size:12px}
 }
 
 @media print {
+    #content_container_0{
+        position:absolute;
+        overflow:visible;
+    }
+    html,body{
+        width:100%;
+        height:100%;
+        overflow:visible;
+    }
+    #D__ID{
+        width:100%;
+        height:100px;
+        overflow:visible;
+    }
     body * {
         visibility: hidden;
     }
