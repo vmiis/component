@@ -50,32 +50,6 @@ function F__ID(){
 }
 </script>
 <style>
-/*
-    #toolbar__ID *{
-        margin:0;
-        padding:0;
-        vertical-align:middle;
-    }
-    #toolbar__ID a{
-        background-color:#697b7b;
-        border:0px solid #18ab29;
-        display:inline-block;
-        cursor:pointer;
-        color:#ffffff;
-        font: 9pt/30px Arial;
-        padding-left:15px;
-        padding-right:15px;
-        text-decoration:none;
-        text-shadow:1px 1px 0px #2f6627;
-        -moz-border-radius:8px;
-        -webkit-border-radius:8px;
-        border-radius:8px;
-        transition: all 0.2s ease-in-out;
-    }
-    #toolbar__ID a:hover {
-    	background-color:#525959;
-    }
-*/
     #toolbar__ID{
 		background-color:#ccc;
 		padding-left:2px;
@@ -86,6 +60,7 @@ function F__ID(){
         background-color:#fff;
 		height:100%;
 		overflow: auto;
+        padding-bottom:260px;
     }
     #tb__ID{
         /*min-width:100px;*/
@@ -102,6 +77,20 @@ function F__ID(){
         font-weight:700;
     }
     @media print {
+        #content_container_0{
+            position:absolute;
+            overflow:visible;
+        }
+        html,body{
+            width:100%;
+            height:100%;
+            overflow:visible;
+        }
+        #D__ID{
+            width:100%;
+            height:100px;
+            overflow:visible;
+        }
         body * {
             visibility: hidden;
         }
@@ -114,15 +103,4 @@ function F__ID(){
             top: 0;
         }
     }
-    /*
-	@media screen and (max-width:900px){
-	    #toolbar__ID{
-	        overflow-x:auto;
-	        white-space: nowrap;
-	    }
-	    #table__ID{
-	        overflow-x:auto;
-	    }
-	}
-    */
 </style>
