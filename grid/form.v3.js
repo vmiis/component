@@ -242,7 +242,7 @@ var save=function(){
             };
         }
         var rid=record.ID;
-        if(rid===null || rid===undefined) _record_add(I);
+        if(rid===null || rid===undefined || rid==="") _record_add(I);
         else _record_modify(I);
     }
 }
