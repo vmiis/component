@@ -4,6 +4,7 @@
     font-family: Verdana,Helvetica,Arial,sans-serif;
 	/*overflow: hidden;*/
 }
+/*
 #toolbar__ID *{
     margin:0;
     padding:0;
@@ -35,6 +36,7 @@
 #toolbar__ID a:hover {
   background-color:#525959;
 }
+*/
 .nav__ID{
     padding:6px 26px 6px 6px;
     color: #202727;
