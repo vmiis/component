@@ -250,7 +250,7 @@ var _render=function(I){
     //cell render
     $('#grid__ID td').each(function(){
         var col = $(this).parent().children().index($(this));
-        var row = $(this).parent().parent().children().index($(this).parent())-1;
+        var row = $(this).parent().parent().children().index($(this).parent())-1; var I=row;
         var column_name=$('#grid__ID th:nth-child('+(col+1)+')').attr('data-header');
         //-------------------------
         if(column_name=='_Form'){
