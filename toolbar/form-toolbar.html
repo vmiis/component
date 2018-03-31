@@ -1,0 +1,56 @@
+<div id=toolbar__ID class="navbar navbar-default" style='margin-bottom:0px;'>
+    <div class="navbar-form navbar-left">
+        <button id=save__ID type=button class='btn btn-secondary' >Submit</button>
+        <button id=delete__ID type=button class='btn btn-secondary' >Delete</button>
+        <button id=copy__ID type=button class='btn btn-secondary' >Copy</button>
+        <button id=paste__ID type=button class='btn btn-secondary' >Paste</button>
+    </div>
+</div>
+<script>
+    (function() {
+        //---------------------------------------------
+        $('#copy__ID').on('click',function(){
+            if($vm.copy_paste==undefined) $vm.copy_paste={}
+            $vm.copy_paste['__ID']=$vm.serialize('#F__ID');
+        })
+        //---------------------------------------------
+        $('#paste__ID').on('click',function(){
+            if($vm.copy_paste!=undefined && $vm.copy_paste['__ID']!=null){
+                $vm.deserialize($vm.copy_paste['__ID'],'#F__ID');
+            }
+        })
+        //---------------------------------------------
+        $('#save__ID').on('click',function(){
+            $('#F__ID').find(':submit').click();
+        })
+        //---------------------------------------------
+        $('#delete__ID').on('click', function(){
+            var record=$vm.vm['__ID'].op.record;
+            var rid=record.ID;
+            if(rid==undefined){
+                return;
+            }
+            if(confirm("Are you sure to delete?\n")){
+                if(rid===undefined){
+                    return;
+                }
+                var options={pid:'__ID',rid:rid,dbv:{},
+                    callback:function(res,type){
+                        $vm.refresh=1;
+                        window.history.go(-1);
+                    }
+                }
+            	$vm.delete_record(options);
+            }
+        })
+        //-------------------------------------
+    })();
+</script>
+<style>
+    #toolbar__ID{
+        background-color:#ccc;
+        padding-left:5px;
+        margin-bottom:0px;
+        overflow:hidden'
+    }
+</style>
