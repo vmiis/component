@@ -233,6 +233,19 @@ var save=function(){
             $("#save2__ID").css('display','inline-block');  //show save button again if there are problems
             return;
         };
+        //--------------
+        for(var key in record){
+            if(Array.isArray(record[key])===true){
+                for(var i=0;i<record[key].length;i++){
+                    delete record[key][i].vm_dirty;
+                    delete record[key][i].vm_valid;
+                    delete record[key][i].vm_custom;
+                    delete record[key][i].vm_readonly;
+                    delete record[key][i].vm_validation;
+                }
+            }
+        }
+        //--------------
         if(_before_submit!==''){
             var r=_before_submit(record,_dbv);
             if(r===false){
