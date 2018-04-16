@@ -166,3 +166,16 @@ var _item_a_row_data=function(I){
     return data;
 };
 //-------------------------------------
+var _item_a_add=function(){
+    var new_records;
+    var new_row={}
+    for(var i=0;i<_item_a_headerB.length;i++){
+        var b=_item_a_headerB[i];
+        if(b!=="ID" && b!=="_Remove"){
+            new_row[b]="";
+        }
+    }
+    _item_a_records.splice(0, 0, new_row);
+    _item_a_render(0);
+};
+//-----------------------------------------------
