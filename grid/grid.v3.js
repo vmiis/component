@@ -652,6 +652,18 @@ var _row_data=function(I){
     }
     return data;
 };
+var _row_data2=function(record){
+    var data={};
+    for(var i=0;i<_headerB.length;i++){
+        var a=_headerA[i][0];
+        var b=_headerB[i];
+		var b2=_headerB[i].substring(0,3);
+        if(_headerA[i]=='_Hidden' || _headerA[i]=='_gridHidden' || (b2!='I2_' && a!='_' && b!=="ID" && b!=="DateTime" && b!=="Author") ){
+            if(record[b]!==null) data[b]=record[b];
+        }
+    }
+    return data;
+};
 //-------------------------------------
 var _set_image_url=function($obj,rid,filename,modified){
     if(rid===undefined) return;
