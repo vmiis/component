@@ -267,7 +267,9 @@ var _render=function(I){
                     	$vm.module_list[name]={table_id:_db_pid.toString(),url:'__PARTS__/grid/form.v3.html'};
 					}
 					if($vm.module_list[this_module_name].prefix!=undefined) prefix=$vm.module_list[this_module_name].prefix;
-                    $vm.load_module_by_name(name,$vm.root_layout_content_slot,
+                    var content_container=$vm.root_layout_content_slot;
+                    if($vm.vm['__ID'].input!=undefined && $vm.vm['__ID'].input.content_container!=undefined) content_container=$vm.vm['__ID'].input.content_container;
+                    $vm.load_module_by_name(name,content_container,
                         {
 							//----------------
 							sys:_mobj.op.sys,
@@ -296,7 +298,9 @@ var _render=function(I){
                         alert('Can not find "'+form_module_name+'" in the module list');
                         return;
                     }
-                    $vm.load_module_by_name(prefix+form_module_name,$vm.root_layout_content_slot,
+                    var content_container=$vm.root_layout_content_slot;
+                    if($vm.vm['__ID'].input!=undefined && $vm.vm['__ID'].input.content_container!=undefined) content_container=$vm.vm['__ID'].input.content_container;
+                    $vm.load_module_by_name(prefix+form_module_name,content_container,
                         {
 							//----------------
 							sys:_mobj.op.sys,

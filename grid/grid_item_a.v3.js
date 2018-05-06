@@ -179,3 +179,16 @@ var _item_a_add=function(){
     _item_a_render(0);
 };
 //-----------------------------------------------
+var _item_a_data=function(){
+    var gdata=[];
+    for(var i=0;i<_item_a_records.length;i++){
+        var a={}
+        for(k in _item_a_records[i]){
+            if(k!="vm_dirty" && k!="vm_valid" && k!="vm_custom"
+                && k!="vm_validation" && k!="vm_readonly") a[k]=_item_a_records[i][k]
+        }
+        gdata.push(a);
+    }
+    return gdata;
+}
+//-----------------------------------------------
