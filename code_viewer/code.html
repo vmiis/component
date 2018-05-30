@@ -1,27 +1,40 @@
 <section>
     <div id=toolbar__ID>
-        <!--<a id=back__ID>Back</a><span class=tab__ID></span>--><span id=name__ID></span>
+        <span id=name__ID></span>, url:<span id=url__ID></span> <button type=button id=reload__ID>Reload</button>
     </div>
     <textarea id=code__ID style='border:0 solid;overflow-y: scroll;'></textarea>
 </section>
 <script>
     function F__ID(){
         //--------------------------------------------------------
-        VmInclude:__BASE__/vmiis/Common-Code/toolbar/back.js
-        VmInclude:__BASE__/vmiis/Common-Code/style/ease-in-out.js
+        VmInclude:__COMPONENT__/toolbar/back.js
+        VmInclude:__COMPONENT__/style/ease-in-out.js
         //--------------------------------------------------------
         $('#D__ID').on('load',function(){
-            $('#name__ID').text($vm.vm['__ID'].op.name.replace(/_/,' '));
+            $('#name__ID').text($vm.vm['__ID'].input.msg.replace(/_/,' '));
+            $('#url__ID').text($vm.vm['__ID'].input.url);
             var top1=$('#code__ID').offset().top;
             $('#code__ID').css("height",$(window).height()-top1-$('#'+$vm.root_layout_footer).outerHeight()-8);
             $('#code__ID').css("width",$(window).width()-5);
-            var code=$vm.vm['__ID'].op.code;
+            var code=$vm.vm['__ID'].input.code;
             $('#code__ID').val(code)
         })
+        //--------------------------------------------------------
+        $('#reload__ID').on('click',function(){
+            var url=$('#url__ID').text();
+            var s_url=url+'_txt';
+            var txt=localStorage.getItem(s_url);
+            console.log('re-loading from url. '+url)
+            $.get(url+'?_='+new Date().getTime(),function(new_txt){
+                localStorage.setItem(s_url,new_txt);
+                alert("Reloaded, please refresh web browser.");
+            },'text');
+        })
+        //--------------------------------------------------------
     }
 </script>
 <style>
-    VmInclude:__BASE__/vmiis/Common-Code/style/default.css
+    VmInclude:__COMPONENT__/style/default.css
     #code__ID{
         white-space:nowrap;
 		color:#000;
